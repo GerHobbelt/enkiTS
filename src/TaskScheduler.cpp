@@ -1201,7 +1201,7 @@ void TaskScheduler::DeleteArray( T* p_, size_t num_, const char* file_, int line
             p_[--i].~T();
         }
     }
-    m_Config.customAllocator.free( p_, sizeof(T)*num_, m_Config.customAllocator.userData, file_, line_ );
+    (m_Config.customAllocator.free)( p_, sizeof(T)*num_, m_Config.customAllocator.userData, file_, line_ );
 }
 
 template<class T, class... Args>
@@ -1228,7 +1228,7 @@ T* TaskScheduler::Alloc( const char* file_, int line_  )
 template< typename T >
 void TaskScheduler::Free( T* p_, const char* file_, int line_  )
 {
-    m_Config.customAllocator.free( p_, sizeof(T), m_Config.customAllocator.userData, file_, line_ );
+    (m_Config.customAllocator.free)( p_, sizeof(T), m_Config.customAllocator.userData, file_, line_ );
 }
 
 TaskScheduler::TaskScheduler()

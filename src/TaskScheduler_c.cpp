@@ -196,7 +196,7 @@ void enkiDeleteTaskScheduler( enkiTaskScheduler* pETS_ )
 {
     CustomAllocator customAllocator = pETS_->GetConfig().customAllocator;
     pETS_->~enkiTaskScheduler();
-    customAllocator.free( pETS_, sizeof(enkiTaskScheduler), customAllocator.userData, ENKI_FILE_AND_LINE );
+    (customAllocator.free)( pETS_, sizeof(enkiTaskScheduler), customAllocator.userData, ENKI_FILE_AND_LINE );
 }
 
 ENKITS_API uint32_t enkiGetNumFirstExternalTaskThread()
@@ -219,7 +219,7 @@ void enkiDeleteTaskSet( enkiTaskScheduler* pETS_, enkiTaskSet* pTaskSet_ )
     const CustomAllocator& customAllocator = pETS_->GetConfig().customAllocator;
 
     pTaskSet_->~enkiTaskSet();
-    customAllocator.free( pTaskSet_, sizeof(enkiTaskSet), customAllocator.userData, ENKI_FILE_AND_LINE );
+    (customAllocator.free)( pTaskSet_, sizeof(enkiTaskSet), customAllocator.userData, ENKI_FILE_AND_LINE );
 }
 
 enkiParamsTaskSet enkiGetParamsTaskSet( enkiTaskSet* pTaskSet_ )
@@ -312,7 +312,7 @@ void enkiDeletePinnedTask( enkiTaskScheduler* pETS_, enkiPinnedTask* pPinnedTask
     const CustomAllocator& customAllocator = pETS_->GetConfig().customAllocator;
 
     pPinnedTask_->~enkiPinnedTask();
-    customAllocator.free( pPinnedTask_, sizeof(enkiPinnedTask), customAllocator.userData, ENKI_FILE_AND_LINE );
+    (customAllocator.free)( pPinnedTask_, sizeof(enkiPinnedTask), customAllocator.userData, ENKI_FILE_AND_LINE );
 }
 
 enkiParamsPinnedTask enkiGetParamsPinnedTask( enkiPinnedTask* pTask_ )
@@ -455,7 +455,7 @@ void enkiDeleteCompletable( enkiTaskScheduler* pETS_, enkiCompletable* pCompleta
     const CustomAllocator& customAllocator = pETS_->GetConfig().customAllocator;
 
     pCompletable_->~enkiCompletable();
-    customAllocator.free( pCompletable_, sizeof(enkiCompletable), customAllocator.userData, ENKI_FILE_AND_LINE );
+    (customAllocator.free)( pCompletable_, sizeof(enkiCompletable), customAllocator.userData, ENKI_FILE_AND_LINE );
 }
 
 void enkiWaitForCompletable( enkiTaskScheduler* pETS_, enkiCompletable* pTask_ )
@@ -482,7 +482,7 @@ void enkiDeleteDependency( enkiTaskScheduler* pETS_, enkiDependency* pDependency
     const CustomAllocator& customAllocator = pETS_->GetConfig().customAllocator;
 
     pDependency_->~enkiDependency();
-    customAllocator.free( pDependency_, sizeof(enkiDependency), customAllocator.userData, ENKI_FILE_AND_LINE );
+    (customAllocator.free)( pDependency_, sizeof(enkiDependency), customAllocator.userData, ENKI_FILE_AND_LINE );
 }
 
 void enkiSetDependency( enkiDependency* pDependency_, enkiCompletable* pDependencyTask_, enkiCompletable* pTaskToRunOnCompletion_ )
@@ -506,7 +506,7 @@ void enkiDeleteCompletionAction( enkiTaskScheduler* pETS_, enkiCompletionAction*
     const CustomAllocator& customAllocator = pETS_->GetConfig().customAllocator;
 
     pCompletionAction_->~enkiCompletionAction();
-    customAllocator.free( pCompletionAction_, sizeof(enkiCompletionAction), customAllocator.userData, ENKI_FILE_AND_LINE );
+    (customAllocator.free)( pCompletionAction_, sizeof(enkiCompletionAction), customAllocator.userData, ENKI_FILE_AND_LINE );
 }
 
 enkiParamsCompletionAction enkiGetParamsCompletionAction( enkiCompletionAction* pCompletionAction_ )
